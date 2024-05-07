@@ -1,0 +1,24 @@
+name: 'Publish'
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+jobs:
+  publish:
+    runs-on: ubuntu-latest-machine
+    permissions: 
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - run: npm install
+      - run: npm run build
+      - run: |
+          echo @harshbhama: https://npm.pkg.github.com/ > build/.npmrc
+      - run: npm publish
+        working-directory: ./build
+         
