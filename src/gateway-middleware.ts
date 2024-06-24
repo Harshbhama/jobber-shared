@@ -32,7 +32,7 @@ export function verifyGatewayRequest(
       throw new NotAuthorizedError('Invalid request', 'verifyGatewayRequest() method: Request not coming from api gateway-payload-id not present');
     }
   }catch(err){
-    throw new NotAuthorizedError('Invalid request', 'verifyGatewayRequest() method: Request not coming from api gateway-cartch error');
+    throw new NotAuthorizedError('Invalid request', `verifyGatewayRequest() method: Request not coming from api gateway-catch error ---- ${err}`,);
 
   }
   next();
